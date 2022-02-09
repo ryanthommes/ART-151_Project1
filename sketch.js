@@ -1,21 +1,43 @@
-let c;
+let yoff;
+let y;
 
-let originX;
-let originY;
+let colors;
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    background(200);
-    frameRate(6);
+
+
+    yoff = 0;
+    angleMode(DEGREES)
+
+    colors = [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255)];
+    frameRate(24);
+
 }
 
 function draw() {
-    originX = width / 2;
-    originY = height / 2;
+    let xoff = 0;
+    let w = 100;
+    let h = 200;
 
-    noStroke();
-    
-    c = color(random(255), random(255), random(255), random(15,196));
-    fill(c);    
-    circle(random(width), random(height), random(15,height));
+    blendMode(BLEND);
+    background(55);
+    blendMode(EXCLUSION);
+
+    beginShape();
+    strokeWeight(2);
+    for (let x = 0; x <= mouseX; x += 5) {
+
+        y = map(noise(xoff, yoff), 0, 1, 0, mouseY);
+
+        fill(random(colors))
+        // rectMode(CENTER)
+        rect(x, y, w, h, 10);
+
+        xoff += 0.05;
+
+    }
+    yoff += 0.01;
+    endShape();
 }
