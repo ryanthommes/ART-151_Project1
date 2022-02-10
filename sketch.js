@@ -18,7 +18,7 @@ function setup() {
 function draw() {
 
     blendMode(BLEND);
-    background(55);
+    background(30);
     blendMode(EXCLUSION);
 
     for (const worm in worms) {
