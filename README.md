@@ -4,6 +4,6 @@ Exclusion Worm is a generative drawing using color exclusion and noise. It uses 
 
 Press 'a' and 'd' to add and delete a 'worm'. 
 
-Press 'c' to change shape. 
+Press 'c' to change shape of last added worm. 
 
-Press '-' and '=' to change size.
+Press '-' and '=' to change size of last added worm.
