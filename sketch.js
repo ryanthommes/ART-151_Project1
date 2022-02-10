@@ -5,7 +5,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(12);
 
-    window.alert("Exclusion Worm is a generative drawing using color exclusion and noise." +
+    window.alert("Exclusion Worm is a generative drawing using color exclusion and noise. " +
                 "It uses color blending (exclusion mode) on the overlapping shapes to create a sort of psychedelic effect.\n\n" +
                 "Press 'a' and 'd' to add and delete a 'worm'.\n" + 
                 "Press 'c' to change shape of lasted added 'worm'.\n" +
