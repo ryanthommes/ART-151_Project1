@@ -6,8 +6,10 @@ function setup() {
     frameRate(12);
 
     window.alert("Exclusion Worm is a generative drawing using color exclusion and noise." +
-                "It uses color blending (exclusion mode) on the overlapping shapes to create a sort of psychedelic effect.\n" +
-                "Press 'a' and 'd' to add and delete a 'worm'. Press 'c' to change shape. Press '-' and '=' to change size.");
+                "It uses color blending (exclusion mode) on the overlapping shapes to create a sort of psychedelic effect.\n\n" +
+                "Press 'a' and 'd' to add and delete a 'worm'.\n" + 
+                "Press 'c' to change shape of lasted added 'worm'.\n" +
+                "Press '-' and '=' to change size of lasted added 'worm'.");
 
     colors = [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255)];
     worms.push(new Worm(height/2));
