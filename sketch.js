@@ -1,43 +1,104 @@
-let yoff;
-let y;
-
 let colors;
+
+let worms = [];
 
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
-
-    yoff = 0;
-    angleMode(DEGREES)
-
     colors = [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255)];
-    frameRate(24);
+    frameRate(12);
 
+    worms.push(new Worm(height/2));
 }
 
 function draw() {
-    let xoff = 0;
-    let w = 100;
-    let h = 200;
 
     blendMode(BLEND);
     background(55);
     blendMode(EXCLUSION);
 
-    beginShape();
-    strokeWeight(2);
-    for (let x = 0; x <= mouseX; x += 5) {
-
-        y = map(noise(xoff, yoff), 0, 1, 0, mouseY);
-
-        fill(random(colors))
-        // rectMode(CENTER)
-        rect(x, y, w, h, 10);
-
-        xoff += 0.05;
-
+    for (const worm in worms) {
+        worms[worm].display();
     }
-    yoff += 0.01;
-    endShape();
+}
+
+function keyPressed() {
+
+    if (keyCode === 68) {               // "d" key - delete
+        worms.pop();                        // delete last index
+    } else if (keyCode === 65) {        // "a" key - add
+        worms.push(new Worm(mouseY));       // insert new worm
+    } else if (keyCode === 67) {        // "c" key
+        worms[worms.length -1]              // change shape
+        .changeShape(); 
+    } else if (keyCode === 173) {       // "-" key
+        worms[worms.length -1]              // decrease size
+        .decreaseSize();
+    } else if (keyCode === 61) {        // "=" key
+        worms[worms.length -1]              // increase shape
+        .increaseSize();
+    }
+}
+
+class Worm {
+
+    constructor(ypos) {
+        this.x = 0;
+        this.y = 0;
+
+        this.xoff = 0;
+        this.yoff = 0;
+
+        this.ypos = ypos;
+
+        this.shape = "circle";
+        this.size  = 50;
+
+        noiseSeed(ypos);
+    }
+
+    display() {
+
+        this.xoff = 0;
+
+        beginShape();
+        strokeWeight(2);
+        for (this.x = 0; this.x <= mouseX; this.x += 10) {
+
+            this.y = map(noise(this.xoff, this.yoff), 0, 1, this.ypos, mouseY);
+    
+            fill(random(colors))
+            // rectMode(CENTER)
+
+            if (this.shape === "circle") {
+                circle(this.x, this.y, this.size);
+            } else if (this.shape === "rect")  {
+                rect(this.x, this.y, this.size, this.size*2, 10);
+            }           
+    
+            this.xoff += 0.05;
+    
+        }
+        this.yoff += 0.01;
+        endShape();
+    }
+
+    changeShape() {
+        if (this.shape === "circle") {
+            this.shape = "rect"
+        } else {
+            this.shape = "circle"
+        }  
+    }
+
+    increaseSize() {
+        this.size += 10;
+    }
+
+    decreaseSize() {
+        if (this.size >= 50) {
+            this.size -= 10;
+        }
+    }
+
 }
