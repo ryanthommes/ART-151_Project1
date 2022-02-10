@@ -5,8 +5,8 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(12);
 
-    window.alert("Exclusion Worm is a generative drawing using color exclusion and noise. " +
-                "It uses color blending (exclusion mode) on the overlapping shapes to create a sort of psychedelic effect.\n\n" +
+    window.alert("Exclusion Worm is a generative drawing using color exclusion and noise." +
+                "It uses color blending (exclusion mode) on the overlapping shapes to create a sort of kaleidoscope effect.\n\n" +
                 "Press 'a' and 'd' to add and delete a 'worm'.\n" + 
                 "Press 'c' to change shape of lasted added 'worm'.\n" +
                 "Press '-' and '=' to change size of lasted added 'worm'.");
@@ -56,7 +56,7 @@ class Worm {
         this.ypos = ypos;
 
         this.shape = "circle";
-        this.size  = 200;
+        this.size  = 100;
 
         noiseSeed(ypos);
     }
@@ -77,13 +77,13 @@ class Worm {
             if (this.shape === "circle") {
                 circle(this.x, this.y, this.size);
             } else if (this.shape === "rect")  {
-                rect(this.x, this.y, this.size, this.size*2, 10);
+                rect(this.x, this.y, this.size, this.size, 10);
             }           
     
             this.xoff += 0.1;
     
         }
-        this.yoff += 0.01;
+        this.yoff += 0.05;
         endShape();
     }
 

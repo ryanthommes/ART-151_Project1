@@ -2,7 +2,7 @@
 
 [View](https://ryanthommes.github.io/ART-151_Project1/)
 
-Exclusion Worm is a generative drawing using color exclusion and noise. It uses color blending (exclusion mode) on the overlapping shapes to create a sort of psychedelic effect. 
+Exclusion Worm is a generative drawing using color exclusion and noise. It uses color blending (exclusion mode) on the overlapping shapes to create a sort of kaleidoscope effect. 
 
 Press 'a' and 'd' to add and delete a 'worm'. 
 
